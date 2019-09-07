@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Landscape/Landscape_Spawner.gd" type="Script" id=1]
+[ext_resource path="res://Landscape/Landscape_Curve.tres" type="Curve" id=2]
+
+[node name="Landscape_Spawner" type="Node2D"]
+position = Vector2( 510, -200 )
+script = ExtResource( 1 )
+landscape_curve = ExtResource( 2 )
+

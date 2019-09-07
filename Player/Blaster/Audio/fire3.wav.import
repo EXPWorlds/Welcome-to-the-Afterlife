@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fire3.wav-1c9f7ae04a25f3e486604465d3d33923.sample"
+
+[deps]
+
+source_file="res://Player/Blaster/Audio/fire3.wav"
+dest_files=[ "res://.import/fire3.wav-1c9f7ae04a25f3e486604465d3d33923.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

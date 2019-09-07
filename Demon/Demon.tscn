@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Demon/demon.png" type="Texture" id=1]
+[ext_resource path="res://Demon/Demon.gd" type="Script" id=2]
+[ext_resource path="res://Dialog/Dialog_Box.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Zoom"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 936, 83 ), Vector2( 881.521, 287.039 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.3, 0.3 ), Vector2( 0.4, 0.4 ) ]
+}
+
+[node name="Demon" type="AnimatedSprite"]
+position = Vector2( 936, 83 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Dialog_Box" parent="." instance=ExtResource( 3 )]
+margin_left = -2004.66
+margin_top = -202.0
+margin_right = -227.658
+margin_bottom = 251.0
+patch_margin_left = 0
+patch_margin_top = 0
+patch_margin_right = 0
+patch_margin_bottom = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Zoom = SubResource( 2 )
+
+[connection signal="dialog_finished" from="Dialog_Box" to="." method="_on_Dialog_Box_dialog_finished"]
+
+[editable path="Dialog_Box"]

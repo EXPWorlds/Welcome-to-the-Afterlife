@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Dialog_Nexus/Dialog_Nexus.gd" type="Script" id=1]
+[ext_resource path="res://Dialog_Nexus/skip_button.png" type="Texture" id=2]
+
+[node name="Dialog_Nexus" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Skip_Button" type="TextureButton" parent="."]
+margin_left = 383.76
+margin_top = 391.552
+margin_right = 639.76
+margin_bottom = 519.552
+texture_normal = ExtResource( 2 )
+
+[connection signal="pressed" from="Skip_Button" to="." method="_on_Skip_Button_pressed"]

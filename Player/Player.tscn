@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/player1.png" type="Texture" id=2]
+[ext_resource path="res://Player/player2.png" type="Texture" id=3]
+[ext_resource path="res://Player/Blaster/Blaster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Shield/Shield.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Obstacles/Audio/explode2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Player/Audio/Death.wav" type="AudioStream" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 26.6998
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 21.5693
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="Player_Collision_Area" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 12.51 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Blaster" parent="." instance=ExtResource( 4 )]
+
+[node name="Player_Area" type="Area2D" parent="."]
+position = Vector2( 0, 12.73 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Area"]
+shape = SubResource( 3 )
+
+[node name="Flash_Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Shield" parent="." instance=ExtResource( 5 )]
+scale = Vector2( 1, 1 )
+
+[node name="Damage_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 3.0
+
+[node name="Death_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="area_entered" from="Player_Area" to="." method="_on_Area2D_area_entered"]

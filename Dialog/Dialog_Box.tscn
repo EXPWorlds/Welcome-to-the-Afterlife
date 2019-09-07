@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Dialog/dialog_rec.png" type="Texture" id=1]
+[ext_resource path="res://Dialog/Dialog_Box.gd" type="Script" id=2]
+[ext_resource path="res://Dialog/SF_Cartoonist_Hand.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Dialog/space_button.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 96
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Button"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Space_Button:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ), Vector2( 1.5, 1.5 ), Vector2( 1.3, 1.3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Space_Button:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1493.78, 321.85 ), Vector2( 1481.47, 308.598 ), Vector2( 1493.78, 321.85 ) ]
+}
+
+[node name="Dialog_Box" type="NinePatchRect"]
+self_modulate = Color( 1, 1, 1, 0.701961 )
+margin_right = 256.0
+margin_bottom = 128.0
+texture = ExtResource( 1 )
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+margin_left = 12.8
+margin_top = 6.4
+margin_right = -12.8
+margin_bottom = -6.4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+text = "Sample Text"
+autowrap = true
+
+[node name="Typer_Timer" type="Timer" parent="."]
+
+[node name="Read_Timer" type="Timer" parent="."]
+
+[node name="Space_Button" type="TextureButton" parent="."]
+margin_left = 197.115
+margin_top = 101.85
+margin_right = 453.115
+margin_bottom = 229.85
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.3, 0.3 )
+texture_normal = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Button"
+anims/Button = SubResource( 2 )
+
+[connection signal="timeout" from="Typer_Timer" to="." method="_on_Typer_Timer_timeout"]
+[connection signal="timeout" from="Read_Timer" to="." method="_on_Read_Timer_timeout"]
+[connection signal="pressed" from="Space_Button" to="." method="_on_Space_Button_pressed"]

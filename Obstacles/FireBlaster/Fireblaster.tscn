@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Obstacles/FireBlaster/Fireblaster.gd" type="Script" id=1]
+[ext_resource path="res://Obstacles/FireBlaster/Fireblaster.png" type="Texture" id=2]
+[ext_resource path="res://Fire/Fire.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Obstacles/Audio/explode3.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Pulse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.757858, 0.732043, 0.757858 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1 ), Vector2( 1, 1.3 ), Vector2( 1.3, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 28.0967
+
+[node name="Fireblaster" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Body" type="Sprite" parent="."]
+scale = Vector2( 1.3, 1 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
+autoplay = "Pulse"
+anims/Pulse = SubResource( 1 )
+
+[node name="Fire" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Flash_Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Blast_Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Enemies",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="Pulse_Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Explode_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 6.0
+
+[connection signal="timeout" from="Blast_Timer" to="." method="_on_Blast_Timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="Pulse_Timer" to="." method="_on_Pulse_Timer_timeout"]
+[connection signal="finished" from="Explode_SFX" to="." method="_on_Explode_SFX_finished"]

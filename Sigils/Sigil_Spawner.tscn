@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sigils/Sigil_Spawner.gd" type="Script" id=1]
+[ext_resource path="res://Sigils/sigil_spawn_curve.tres" type="Curve" id=2]
+
+[node name="Sigil_Spawner" type="Node2D"]
+position = Vector2( 510, -200 )
+script = ExtResource( 1 )
+sigil_spawn_curve = ExtResource( 2 )
+

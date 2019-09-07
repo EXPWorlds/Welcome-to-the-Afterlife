@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fire/fire_rec.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.418848, 0.95288 )
+colors = PoolColorArray( 0.851562, 0, 1, 1, 0.0419617, 0.669897, 0.976562, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.6716 ), 0.0, 0.452864, 0, 0, Vector2( 0.518724, 0.6012 ), -0.704976, -0.704976, 0, 0, Vector2( 1, 0.2316 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="Blue_Fire" type="Particles2D"]
+lifetime = 1.5
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )
+

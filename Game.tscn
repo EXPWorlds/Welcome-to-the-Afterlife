@@ -1,0 +1,444 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Dialog_Nexus/Dialog_Nexus.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sigils/Sigil_Counter/Sigil_Nexus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Landscape/Landscape_Spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sigils/Sigil_Spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Obstacles/Obstacle_Spawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/UI.gd" type="Script" id=8]
+[ext_resource path="res://Angel/Angel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Demon/Demon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sigils/Sigil_Labels/White_Label/White_Sigil_UI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sigils/Sigil_Labels/Black_Label/Black_Sigil_UI.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/Progress_Bar/Progress_Bar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Camera_Shaker/Camera_Shaker.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Main_Menu/Menu.gd" type="Script" id=15]
+[ext_resource path="res://Main_Menu/Sigils/Menu_Sigil_Spawer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Main_Menu/title.png" type="Texture" id=17]
+[ext_resource path="res://Angel/angel.png" type="Texture" id=18]
+[ext_resource path="res://Demon/demon.png" type="Texture" id=19]
+[ext_resource path="res://Main_Menu/play_button.png" type="Texture" id=20]
+[ext_resource path="res://Main_Menu/exit_button.png" type="Texture" id=21]
+[ext_resource path="res://Ending/End.gd" type="Script" id=22]
+[ext_resource path="res://Splash_Screen/Splash_Screen.gd" type="Script" id=23]
+[ext_resource path="res://Splash_Screen/splash_screen.png" type="Texture" id=24]
+[ext_resource path="res://Game_Timer/Game_Timer.gd" type="Script" id=25]
+[ext_resource path="res://Mouse/Cursor.tscn" type="PackedScene" id=26]
+[ext_resource path="res://BGM_Player/BGM_Player.tscn" type="PackedScene" id=27]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 530, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 530, 50 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50, 400 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 50, 400 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Title_Jiggle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.659754, 0.707107, 0.707107 ),
+"update": 0,
+"values": [ Vector2( 1, 0.9 ), Vector2( 0.9, 1 ), Vector2( 1, 0.9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7.93347, 31.7335 ), Vector2( 57.1204, 15.8667 ), Vector2( 7.933, 31.733 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 0.757859, 1.31951, 1.6245 ),
+"update": 0,
+"values": [ Vector2( 197.646, 593.942 ), Vector2( 207.386, 549.137 ), Vector2( 197.646, 593.942 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 0.840896, 1 ),
+"update": 0,
+"values": [ 1.0, -1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1.7411, 1.68179, 1 ),
+"update": 0,
+"values": [ Vector2( 855.18, 601.938 ), Vector2( 833.752, 539.601 ), Vector2( 855.18, 601.938 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, -2.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 354.539, 397.396 ), Vector2( 329.215, 385.708 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 431.099, 596.906 ), Vector2( 403.967, 590.877 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="Dialog_Nexus" parent="." instance=ExtResource( 2 )]
+
+[node name="Sigil_Nexus" parent="." instance=ExtResource( 3 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 96.0
+margin_bottom = 100.0
+mouse_filter = 2
+color = Color( 0.588235, 0.176471, 0.145098, 1 )
+
+[node name="Walls" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" groups=[
+"Wall",
+]]
+position = Vector2( 510, -50 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
+shape = SubResource( 1 )
+
+[node name="BottomWall" type="StaticBody2D" parent="Walls" groups=[
+"Wall",
+]]
+position = Vector2( 510, 818 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall"]
+shape = SubResource( 2 )
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" groups=[
+"Wall",
+]]
+position = Vector2( -50, 384 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+shape = SubResource( 3 )
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" groups=[
+"Wall",
+]]
+position = Vector2( 1070, 384 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+shape = SubResource( 4 )
+
+[node name="Landscape_Spawner" parent="." instance=ExtResource( 4 )]
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+position = Vector2( 510, 700 )
+
+[node name="AnimatedSprite" parent="Player" index="0"]
+frame = 0
+
+[node name="Sigil_Spawner" parent="." instance=ExtResource( 6 )]
+Sigil_Nexus_Path = NodePath("../Sigil_Nexus")
+
+[node name="Obstacle_Spawner" parent="." instance=ExtResource( 7 )]
+
+[node name="UI" type="Control" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 8 )
+
+[node name="Angel" parent="UI" instance=ExtResource( 9 )]
+
+[node name="Demon" parent="UI" instance=ExtResource( 10 )]
+playing = true
+
+[node name="White_Sigil_UI" parent="UI" instance=ExtResource( 11 )]
+margin_left = -2.27391
+margin_top = -77.9815
+margin_right = 241.726
+margin_bottom = 25.0185
+mouse_filter = 2
+
+[node name="Black_Sigil_UI" parent="UI" instance=ExtResource( 12 )]
+margin_left = -218.356
+margin_top = -80.6134
+margin_right = 25.6444
+margin_bottom = 22.3866
+mouse_filter = 2
+
+[node name="Progress_Meter" parent="UI" instance=ExtResource( 13 )]
+margin_left = 254.31
+margin_top = 723.19
+margin_right = 787.31
+margin_bottom = 753.19
+
+[node name="Camera2D" type="Camera2D" parent="."]
+editor/display_folded = true
+anchor_mode = 0
+current = true
+
+[node name="Camera_Shaker" parent="Camera2D" instance=ExtResource( 14 )]
+
+[node name="Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 15 )
+
+[node name="Menu_Sigil_Spawer" parent="Menu" instance=ExtResource( 16 )]
+
+[node name="Title" type="TextureRect" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.53081
+margin_top = 11.5015
+margin_right = -2.53082
+margin_bottom = 11.5015
+rect_scale = Vector2( 0.975902, 0.924098 )
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Title"]
+anims/Title_Jiggle = SubResource( 5 )
+
+[node name="Angel" type="Sprite" parent="Menu"]
+position = Vector2( 200.774, 579.554 )
+rotation = 0.0105998
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 18 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Angel"]
+autoplay = "Angel_Dance"
+anims/Angel_Dance = SubResource( 6 )
+
+[node name="Demon" type="Sprite" parent="Menu"]
+position = Vector2( 835.488, 544.652 )
+rotation = -0.0231564
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 19 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Demon"]
+autoplay = "Demon_Dance"
+anims/Demon_Dance = SubResource( 7 )
+
+[node name="Play_Button" type="TextureButton" parent="Menu"]
+margin_left = 354.539
+margin_top = 397.396
+margin_right = 610.539
+margin_bottom = 525.396
+rect_scale = Vector2( 1.3, 1.3 )
+texture_normal = ExtResource( 20 )
+stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Play_Button"]
+anims/Play_Button_Bigger = SubResource( 8 )
+
+[node name="Exit_Button" type="TextureButton" parent="Menu"]
+margin_left = 431.099
+margin_top = 596.906
+margin_right = 687.099
+margin_bottom = 724.906
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 21 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu/Exit_Button"]
+anims/Exit_Button_Bigger = SubResource( 9 )
+
+[node name="End" type="Control" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 22 )
+
+[node name="TextureRect" type="TextureRect" parent="End"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Fade_Timer" type="Timer" parent="End"]
+wait_time = 3.0
+
+[node name="Splash_Screen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 23 )
+
+[node name="TextureRect" type="TextureRect" parent="Splash_Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 24 )
+
+[node name="ColorRect" type="ColorRect" parent="Splash_Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.137255, 0.137255, 0.137255, 1 )
+
+[node name="Fade_Timer" type="Timer" parent="Splash_Screen"]
+
+[node name="Game_Timer" type="Timer" parent="."]
+script = ExtResource( 25 )
+
+[node name="Cursor" parent="." instance=ExtResource( 26 )]
+z_index = 1
+
+[node name="BGM_Player" parent="." instance=ExtResource( 27 )]
+
+[connection signal="dialog_authorized" from="Dialog_Nexus" to="Landscape_Spawner" method="_on_Dialog_Nexus_dialog_authorized"]
+[connection signal="dialog_authorized" from="Dialog_Nexus" to="." method="_on_Dialog_Nexus_dialog_authorized"]
+[connection signal="dialog_authorized" from="Dialog_Nexus" to="Dialog_Nexus" method="_on_Dialog_Nexus_dialog_authorized"]
+[connection signal="dialog_authorized" from="Dialog_Nexus" to="UI/Demon" method="_on_Dialog_Nexus_dialog_authorized"]
+[connection signal="dialog_authorized" from="Dialog_Nexus" to="Obstacle_Spawner" method="_on_Dialog_Nexus_dialog_authorized"]
+[connection signal="dialog_authorized" from="Dialog_Nexus" to="UI/Angel" method="_on_Dialog_Nexus_dialog_authorized"]
+[connection signal="skipped_content" from="Dialog_Nexus" to="." method="_on_Dialog_Nexus_skipped_content"]
+[connection signal="skipped_content" from="Dialog_Nexus" to="UI/Demon" method="_on_Dialog_Nexus_skipped_content"]
+[connection signal="skipped_content" from="Dialog_Nexus" to="UI/Angel" method="_on_Dialog_Nexus_skipped_content"]
+[connection signal="black_sigil_acquired" from="Sigil_Nexus" to="Player" method="_on_Sigil_Nexus_black_sigil_acquired"]
+[connection signal="black_sigil_acquired" from="Sigil_Nexus" to="." method="_on_Sigil_Nexus_black_sigil_acquired"]
+[connection signal="black_sigil_acquired" from="Sigil_Nexus" to="Dialog_Nexus" method="_on_Sigil_Nexus_black_sigil_acquired"]
+[connection signal="black_sigil_acquired" from="Sigil_Nexus" to="UI/Black_Sigil_UI" method="_on_Sigil_Nexus_black_sigil_acquired"]
+[connection signal="white_sigil_acquired" from="Sigil_Nexus" to="Player" method="_on_Sigil_Nexus_white_sigil_acquired"]
+[connection signal="white_sigil_acquired" from="Sigil_Nexus" to="." method="_on_Sigil_Nexus_white_sigil_acquired"]
+[connection signal="white_sigil_acquired" from="Sigil_Nexus" to="Dialog_Nexus" method="_on_Sigil_Nexus_white_sigil_acquired"]
+[connection signal="white_sigil_acquired" from="Sigil_Nexus" to="UI/White_Sigil_UI" method="_on_Sigil_Nexus_white_sigil_acquired"]
+[connection signal="dialog_finished" from="Landscape_Spawner" to="Dialog_Nexus" method="_on_Dialog_Finished"]
+[connection signal="gates_reached" from="Landscape_Spawner" to="." method="_on_Landscape_Spawner_gates_reached"]
+[connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
+[connection signal="shake_requested" from="Player" to="Camera2D/Camera_Shaker" method="_on_Requested_shake"]
+[connection signal="boss_battle_begun" from="Obstacle_Spawner" to="." method="_on_Obstacle_Spawner_boss_battle_begun"]
+[connection signal="boss_defeated" from="Obstacle_Spawner" to="." method="_on_Obstacle_Spawner_boss_defeated"]
+[connection signal="dialog_finished" from="Obstacle_Spawner" to="Dialog_Nexus" method="_on_Dialog_Finished"]
+[connection signal="shake_requested" from="Obstacle_Spawner" to="Camera2D/Camera_Shaker" method="_on_Requested_shake"]
+[connection signal="dialog_finished" from="UI/Angel" to="Dialog_Nexus" method="_on_Dialog_Finished"]
+[connection signal="dialog_requested" from="UI/Angel" to="Dialog_Nexus" method="_on_Dialog_Request"]
+[connection signal="dialog_finished" from="UI/Demon" to="Dialog_Nexus" method="_on_Dialog_Finished"]
+[connection signal="dialog_requested" from="UI/Demon" to="Dialog_Nexus" method="_on_Dialog_Request"]
+[connection signal="pressed_play" from="Menu" to="." method="_on_Menu_pressed_play"]
+[connection signal="pressed_quit" from="Menu" to="." method="_on_Menu_pressed_quit"]
+[connection signal="mouse_entered" from="Menu/Play_Button" to="Menu" method="_on_Play_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/Play_Button" to="Menu" method="_on_Play_Button_mouse_exited"]
+[connection signal="pressed" from="Menu/Play_Button" to="Menu" method="_on_Play_Button_pressed"]
+[connection signal="mouse_entered" from="Menu/Exit_Button" to="Menu" method="_on_Exit_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/Exit_Button" to="Menu" method="_on_Exit_Button_mouse_exited"]
+[connection signal="pressed" from="Menu/Exit_Button" to="Menu" method="_on_Exit_Button_pressed"]
+[connection signal="started_fading_out" from="End" to="." method="_on_End_started_fading_out"]
+[connection signal="timeout" from="End/Fade_Timer" to="End" method="_on_Fade_Timer_timeout"]
+[connection signal="started_menu_fade_in" from="Splash_Screen" to="." method="_on_Splash_Screen_started_menu_fade_in"]
+[connection signal="ticked" from="Game_Timer" to="Sigil_Spawner" method="_on_Game_Timer_ticked"]
+[connection signal="ticked" from="Game_Timer" to="Landscape_Spawner" method="_on_Game_Timer_ticked"]
+[connection signal="ticked" from="Game_Timer" to="Dialog_Nexus" method="_on_Game_Timer_ticked"]
+[connection signal="ticked" from="Game_Timer" to="Obstacle_Spawner" method="_on_Game_Timer_ticked"]
+[connection signal="ticked" from="Game_Timer" to="UI/Progress_Meter" method="_on_Game_Timer_ticked"]
+[connection signal="timeout" from="Game_Timer" to="Game_Timer" method="_on_Game_Timer_timeout"]
+
+[editable path="Player"]

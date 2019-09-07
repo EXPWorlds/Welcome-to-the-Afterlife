@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sigil3.wav-5053147bd511a33872b270e1e7f56cbf.sample"
+
+[deps]
+
+source_file="res://Sigils/Audio/Sigil3.wav"
+dest_files=[ "res://.import/Sigil3.wav-5053147bd511a33872b270e1e7f56cbf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
